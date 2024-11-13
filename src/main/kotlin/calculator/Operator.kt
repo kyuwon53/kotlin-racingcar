@@ -13,6 +13,13 @@ enum class Operator(
     }),
     ;
 
+    companion object {
+        fun fromSymbol(symbol: String): Operator {
+            return entries.find { it.symbol == symbol }
+                ?: throw IllegalArgumentException("잘못된 연산자: $symbol")
+        }
+    }
+
     fun apply(
         num1: Double,
         num2: Double,

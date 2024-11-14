@@ -11,16 +11,16 @@ class Expression(input: String?) {
     private fun parseElements(input: String): List<Any> {
         val sanitizedInput = input.trim().replace("\\s".toRegex(), "") // 모든 공백 제거
         val regex = """(\d+(\.\d+)?|[^\d.\s])""".toRegex() // 숫자 또는 연산자 추출
-        val elements = mutableListOf<Any>()
 
-        regex.findAll(sanitizedInput).forEachIndexed { index, matchResult ->
-            val element = matchResult.value
-            val parseElement = parseElement(index, element)
-            elements.add(parseElement)
-        }
+        val elements =
+            regex
+                .findAll(sanitizedInput)
+                .mapIndexed { index, matchResult ->
+                    parseElement(index, matchResult.value)
+                }
 
-        require(elements.size % 2 == 1) { ERROR_INVALID_FORMAT }
-        return elements
+        require(elements.count() % 2 == 1) { ERROR_INVALID_FORMAT }
+        return elements.toList()
     }
 
     private fun parseNumber(token: String): Double {

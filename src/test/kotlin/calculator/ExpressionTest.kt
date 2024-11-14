@@ -34,15 +34,15 @@ class ExpressionTest : BehaviorSpec({
     }
 
     Given("잘못된 입력이 주어진 경우") {
-        When("입력이 null이거나 빈 공백일 때") {
+        When("입력이 빈 공백일 때") {
             Then("IllegalArgumentException이 발생한다") {
                 shouldThrow<IllegalArgumentException> {
-                    Expression(null)
-                }.message shouldBe "입력값이 null이거나 빈 공백입니다."
+                    Expression("   ")
+                }.message shouldBe "입력값이 빈 공백입니다."
 
                 shouldThrow<IllegalArgumentException> {
                     Expression("")
-                }.message shouldBe "입력값이 null이거나 빈 공백입니다."
+                }.message shouldBe "입력값이 빈 공백입니다."
             }
         }
 

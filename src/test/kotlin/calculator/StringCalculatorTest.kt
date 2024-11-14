@@ -59,8 +59,7 @@ class StringCalculatorTest : BehaviorSpec({
                 "5 10 /" to "잘못된 입력 형식입니다.",
                 "- 10 /" to "잘못된 입력 형식입니다.",
                 "- 10 / 5" to "잘못된 입력 형식입니다.",
-                "" to "입력값이 null이거나 빈 공백입니다.",
-                null to "입력값이 null이거나 빈 공백입니다.",
+                "" to "입력값이 빈 공백입니다.",
             )
         When("calculate 함수를 호출하면") {
             invalidExpressions.forEach { (input, expected) ->

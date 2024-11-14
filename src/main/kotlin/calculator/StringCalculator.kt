@@ -2,7 +2,7 @@ package calculator
 
 class StringCalculator
 
-fun calculate(input: String?): Double {
+fun calculate(input: String): Double {
     val expression = Expression(input)
     return expression.parsedElements
         .drop(1)

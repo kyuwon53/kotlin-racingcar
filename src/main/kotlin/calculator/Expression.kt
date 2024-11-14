@@ -1,10 +1,10 @@
 package calculator
 
-class Expression(input: String?) {
+class Expression(input: String) {
     val parsedElements: List<Any>
 
     init {
-        require(!input.isNullOrBlank()) { ERROR_INVALID_INPUT }
+        require(input.isNotBlank()) { ERROR_INVALID_INPUT }
         parsedElements = parseElements(input.trim())
     }
 
@@ -43,7 +43,7 @@ class Expression(input: String?) {
     }
 
     companion object {
-        private const val ERROR_INVALID_INPUT = "입력값이 null이거나 빈 공백입니다."
+        private const val ERROR_INVALID_INPUT = "입력값이 빈 공백입니다."
         private const val ERROR_INVALID_FORMAT = "잘못된 입력 형식입니다."
     }
 

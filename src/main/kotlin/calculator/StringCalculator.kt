@@ -11,7 +11,7 @@ fun calculate(input: String?): Double {
                 is Operator -> {
                     val nextIndex = expression.parsedElements.indexOf(element) + 1
                     val nextNumber = expression.getNumber(nextIndex)
-                    element.apply(acc, nextNumber)
+                    element.calculate(acc, nextNumber)
                 }
 
                 else -> acc

@@ -4,6 +4,7 @@ import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
 import domain.Race
+import view.ResultView
 
 class RaceGame(
     carNames: CarNames,
@@ -14,5 +15,6 @@ class RaceGame(
 
     fun start() {
         race.start()
+        ResultView.displayWinners(race.getWinners())
     }
 }

@@ -1,6 +1,8 @@
 package domain
 
-class Car {
+class Car(
+    val name: CarName,
+) {
     private var position: Position = Position()
 
     fun move(shouldMove: Boolean) {

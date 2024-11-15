@@ -8,7 +8,10 @@ object ResultView {
     }
 
     fun displayRoundResults(cars: Cars) {
-        cars.getDistances().forEach { println("-".repeat(it)) }
+        cars.getCars()
+            .forEach { println("${it.name.value} : ${displayDistances(it.currentDistance())}") }
         println() // 각 라운드 간 구분을 위한 빈 줄
     }
+
+    private fun displayDistances(distance: Int) = "-".repeat(distance)
 }

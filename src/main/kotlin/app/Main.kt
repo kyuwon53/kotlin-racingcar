@@ -5,8 +5,6 @@ import domain.RandomMoveDecision
 import view.InputView
 import view.ResultView
 
-class Main
-
 fun main() {
     val carCount = InputView.getCarCount()
     val rounds = InputView.getRounds()

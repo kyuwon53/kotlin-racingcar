@@ -17,8 +17,9 @@ class CarNamesTest : FunSpec({
         }.message shouldBe "자동차 이름은 중복될 수 없습니다."
     }
 
-    test("정상적인 이름 리스트로 CarNames 객체를 생성할 수 있다") {
-        val carNames = CarNames(listOf(CarName("Benz"), CarName("Audi")))
-        carNames.names() shouldBe listOf("Benz", "Audi")
+    test("유효한 CarName 리스트로 CarNames 객체를 생성할 수 있다") {
+        val inputNames = listOf(CarName("Benz"), CarName("Audi"))
+        val carNames = CarNames(inputNames)
+        carNames.names() shouldBe inputNames
     }
 })

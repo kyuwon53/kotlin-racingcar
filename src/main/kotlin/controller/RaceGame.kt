@@ -1,21 +1,18 @@
 package controller
 
-import domain.Car
+import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
-import view.ResultView
+import domain.Race
 
 class RaceGame(
-    carCount: Int,
-    private val rounds: Int,
+    carNames: CarNames,
+    rounds: Int,
     moveDecision: MoveDecision,
 ) {
-    private val cars = Cars(List(carCount) { Car() }, moveDecision)
+    private val race = Race(Cars.ofCarNames(carNames, moveDecision), rounds)
 
     fun start() {
-        repeat(rounds) {
-            cars.race()
-            ResultView.displayRoundResults(cars)
-        }
+        race.start()
     }
 }

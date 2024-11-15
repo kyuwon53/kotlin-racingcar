@@ -6,5 +6,5 @@ class CarNames(private val names: List<CarName>) {
         require(names.distinct().size == names.size) { "자동차 이름은 중복될 수 없습니다." }
     }
 
-    fun names(): List<String> = names.map { it.value }
+    fun names(): List<CarName> = names
 }

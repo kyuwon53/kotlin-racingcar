@@ -5,5 +5,5 @@ class Position {
 
     fun moveForward(): Int = distance++
 
-    fun display(): String = "-".repeat(distance)
+    fun distance(): Int = distance
 }

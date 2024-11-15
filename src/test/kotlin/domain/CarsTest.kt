@@ -15,7 +15,7 @@ class CarsTest : BehaviorSpec({
             cars.race()
 
             Then("모든 자동차는 한 칸 전진한다") {
-                cars.displayPositions() shouldBe listOf("-", "-", "-")
+                cars.getDistances() shouldBe listOf(1, 1, 1)
             }
         }
 
@@ -24,7 +24,7 @@ class CarsTest : BehaviorSpec({
             cars.race()
 
             Then("모든 자동차는 위치를 유지한다") {
-                cars.displayPositions() shouldBe listOf("-", "-", "-") // 이미 전진한 상태에서 멈춤
+                cars.getDistances() shouldBe listOf(1, 1, 1) // 이미 전진한 상태에서 멈춤
             }
         }
     }

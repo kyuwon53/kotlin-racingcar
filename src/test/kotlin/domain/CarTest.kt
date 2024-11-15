@@ -9,13 +9,13 @@ class CarTest : FunSpec({
         val car = Car()
         car.move(true)
 
-        car.displayPosition() shouldBe "-"
+        car.currentDistance() shouldBe 1
     }
 
     test("자동차는 전진 조건을 충족하지 않으면 멈춘다") {
         val car = Car()
         car.move(false)
 
-        car.displayPosition() shouldBe ""
+        car.currentDistance() shouldBe 0
     }
 })

@@ -10,5 +10,5 @@ class Cars(
         }
     }
 
-    fun displayPositions(): List<String> = cars.map { it.displayPosition() }
+    fun getDistances(): List<Int> = cars.map { it.currentDistance() }
 }

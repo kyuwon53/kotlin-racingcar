@@ -9,5 +9,5 @@ class Car {
         }
     }
 
-    fun displayPosition(): String = position.display()
+    fun currentDistance(): Int = position.distance()
 }

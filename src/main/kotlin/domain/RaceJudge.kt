@@ -1,9 +1,9 @@
 package domain
 
 class RaceJudge {
-    fun findWinners(cars: Cars): List<Car> {
+    fun findWinners(cars: Cars): Winners {
         if (cars.getCars().isEmpty()) {
-            return emptyList()
+            return Winners(emptyList())
         }
 
         val maxDistance = calculateMaxDistance(cars)
@@ -18,8 +18,10 @@ class RaceJudge {
     private fun filterWinners(
         cars: Cars,
         maxDistance: Int,
-    ): List<Car> {
-        return cars.getCars()
-            .filter { it.currentDistance() == maxDistance }
+    ): Winners {
+        val winners =
+            cars.getCars()
+                .filter { it.currentDistance() == maxDistance }
+        return Winners(winners)
     }
 }

@@ -19,5 +19,5 @@ class Cars(
         }
     }
 
-    fun getDistances(): List<Int> = cars.map { it.currentDistance() }
+    fun getCars(): List<Car> = cars
 }

@@ -1,26 +1,26 @@
 package calculator
 
-class Expression(input: String?) {
+class Expression(input: String) {
     val parsedElements: List<Any>
 
     init {
-        require(!input.isNullOrBlank()) { ERROR_INVALID_INPUT }
+        require(input.isNotBlank()) { ERROR_INVALID_INPUT }
         parsedElements = parseElements(input.trim())
     }
 
     private fun parseElements(input: String): List<Any> {
         val sanitizedInput = input.trim().replace("\\s".toRegex(), "") // 모든 공백 제거
         val regex = """(\d+(\.\d+)?|[^\d.\s])""".toRegex() // 숫자 또는 연산자 추출
-        val elements = mutableListOf<Any>()
 
-        regex.findAll(sanitizedInput).forEachIndexed { index, matchResult ->
-            val element = matchResult.value
-            val parseElement = parseElement(index, element)
-            elements.add(parseElement)
-        }
+        val elements =
+            regex
+                .findAll(sanitizedInput)
+                .mapIndexed { index, matchResult ->
+                    parseElement(index, matchResult.value)
+                }
 
-        require(elements.size % 2 == 1) { ERROR_INVALID_FORMAT }
-        return elements
+        require(elements.count() % 2 == 1) { ERROR_INVALID_FORMAT }
+        return elements.toList()
     }
 
     private fun parseNumber(token: String): Double {
@@ -43,7 +43,7 @@ class Expression(input: String?) {
     }
 
     companion object {
-        private const val ERROR_INVALID_INPUT = "입력값이 null이거나 빈 공백입니다."
+        private const val ERROR_INVALID_INPUT = "입력값이 빈 공백입니다."
         private const val ERROR_INVALID_FORMAT = "잘못된 입력 형식입니다."
     }
 

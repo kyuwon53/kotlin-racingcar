@@ -20,7 +20,7 @@ enum class Operator(
         }
     }
 
-    fun apply(
+    fun calculate(
         num1: Double,
         num2: Double,
     ): Double = operation(num1, num2)

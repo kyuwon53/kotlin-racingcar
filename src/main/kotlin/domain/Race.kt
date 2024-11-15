@@ -12,4 +12,8 @@ class Race(
             ResultView.displayRoundResults(cars)
         }
     }
+
+    fun getWinners(): Winners {
+        return RaceJudge().findWinners(cars)
+    }
 }

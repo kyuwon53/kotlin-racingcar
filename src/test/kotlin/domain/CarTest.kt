@@ -5,14 +5,14 @@ import io.kotest.matchers.shouldBe
 
 class CarTest : FunSpec({
 
-    test("Car는 shouldMove가 true일 때 전진한다") {
+    test("자동차는 전진 조건을 충족하면 한 칸 전진한다") {
         val car = Car()
         car.move(true)
 
         car.displayPosition() shouldBe "-"
     }
 
-    test("Car는 shouldMove가 false일 때 멈춘다") {
+    test("자동차는 전진 조건을 충족하지 않으면 멈춘다") {
         val car = Car()
         car.move(false)
 

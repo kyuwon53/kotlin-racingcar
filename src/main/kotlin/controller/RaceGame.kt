@@ -10,7 +10,7 @@ class RaceGame(
     rounds: Int,
     moveDecision: MoveDecision,
 ) {
-    private val race = Race(Cars.ofCarNames(carNames, moveDecision), rounds)
+    private val race = Race(Cars(carNames, moveDecision), rounds)
 
     fun start() = race.start()
 

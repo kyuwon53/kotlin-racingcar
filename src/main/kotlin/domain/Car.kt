@@ -2,9 +2,8 @@ package domain
 
 class Car(
     val name: CarName,
+    private val position: Position = Position(),
 ) {
-    private var position: Position = Position()
-
     fun move(shouldMove: Boolean) {
         if (shouldMove) {
             position.moveForward()
@@ -12,6 +11,8 @@ class Car(
     }
 
     fun currentDistance(): Int = position.distance()
+
+    constructor(name: CarName, initialPosition: Int) : this(name, Position(initialPosition))
 
     @JvmInline
     value class CarName(val value: String) {

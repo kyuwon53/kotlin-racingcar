@@ -7,14 +7,9 @@ import io.kotest.matchers.shouldBe
 class RaceJudgeTest : BehaviorSpec({
 
     Given("여러 자동차가 있을 때") {
-        val car1 = Car(CarName("Benz"))
-        val car2 = Car(CarName("Audi"))
-        val car3 = Car(CarName("Ford"))
-
-        // 자동차 상태 설정
-        repeat(5) { car1.move(true) } // 5칸 전진
-        repeat(5) { car2.move(true) } // 5칸 전진
-        repeat(3) { car3.move(true) } // 3칸 전진
+        val car1 = Car(CarName("Benz"), 5)
+        val car2 = Car(CarName("Audi"), 5)
+        val car3 = Car(CarName("Ford"), 3)
 
         val cars = Cars(listOf(car1, car2, car3), { true })
         val judge = RaceJudge()

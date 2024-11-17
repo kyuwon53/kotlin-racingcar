@@ -21,6 +21,6 @@ class CarNamesTest : FunSpec({
     test("유효한 CarName 리스트로 CarNames 객체를 생성할 수 있다") {
         val inputNames = listOf(CarName("Benz"), CarName("Audi"))
         val carNames = CarNames(inputNames)
-        carNames.names() shouldBe inputNames
+        carNames.values() shouldBe inputNames
     }
 })

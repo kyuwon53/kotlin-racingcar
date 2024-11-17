@@ -7,8 +7,4 @@ class Race(
         cars.race()
         return cars
     }
-
-    fun getWinners(): Winners {
-        return RaceJudge().findWinners(cars)
-    }
 }

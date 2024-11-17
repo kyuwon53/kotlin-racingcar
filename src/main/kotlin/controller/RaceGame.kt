@@ -4,15 +4,21 @@ import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
 import domain.Race
+import view.ResultView
 
 class RaceGame(
+    private val rounds: Int,
     carNames: CarNames,
-    rounds: Int,
     moveDecision: MoveDecision,
 ) {
-    private val race = Race(Cars(carNames, moveDecision), rounds)
+    private val race = Race(Cars(carNames, moveDecision))
 
-    fun start() = race.start()
+    fun start() {
+        repeat(rounds) {
+            val result = race.start()
+            ResultView.displayRoundResults(result)
+        }
+    }
 
     fun winners() = race.getWinners()
 }

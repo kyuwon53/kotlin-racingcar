@@ -15,7 +15,7 @@ object ResultView {
     }
 
     fun displayWinners(winners: Winners) {
-        val winnerNames = winners.names().joinToString(", ")
+        val winnerNames = winners.cars().map { it.name.value }.joinToString(", ")
         println("최종 우승자: $winnerNames")
     }
 

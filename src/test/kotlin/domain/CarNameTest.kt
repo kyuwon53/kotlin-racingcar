@@ -1,5 +1,6 @@
 package domain
 
+import domain.Car.CarName
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe

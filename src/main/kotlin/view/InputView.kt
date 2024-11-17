@@ -1,6 +1,6 @@
 package view
 
-import domain.CarName
+import domain.Car.CarName
 import domain.CarNames
 
 object InputView {

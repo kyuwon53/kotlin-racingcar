@@ -1,5 +1,6 @@
 package domain
 
+import domain.Car.CarName
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 

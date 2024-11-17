@@ -1,5 +1,7 @@
 package domain
 
+import domain.Car.CarName
+
 class CarNames(private val names: List<CarName>) {
     init {
         require(names.isNotEmpty()) { "자동차 이름은 하나 이상이어야 합니다." }

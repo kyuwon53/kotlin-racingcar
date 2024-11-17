@@ -1,5 +1,6 @@
 package domain
 
+import domain.Car.CarName
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
@@ -22,7 +23,7 @@ class RaceJudgeTest : BehaviorSpec({
             val winners = judge.findWinners(cars)
 
             Then("가장 멀리 이동한 자동차들이 반환된다") {
-                winners shouldBe listOf(car1, car2)
+                winners.winners shouldBe listOf(car1, car2)
             }
         }
     }
@@ -35,7 +36,7 @@ class RaceJudgeTest : BehaviorSpec({
             val winners = judge.findWinners(cars)
 
             Then("빈 리스트가 반환된다") {
-                winners shouldBe emptyList()
+                winners.winners shouldBe emptyList()
             }
         }
     }

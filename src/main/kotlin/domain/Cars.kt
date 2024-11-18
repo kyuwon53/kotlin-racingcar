@@ -2,7 +2,7 @@ package domain
 
 class Cars(
     private val cars: List<Car>,
-    private val moveDecision: MoveDecision,
+    private val moveDecision: MoveDecision = RandomMoveDecision(),
 ) {
     constructor(
         carNames: CarNames,

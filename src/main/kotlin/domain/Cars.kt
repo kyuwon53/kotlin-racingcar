@@ -12,10 +12,12 @@ class Cars(
         moveDecision,
     )
 
-    fun race() {
-        cars.forEach { car ->
-            car.move(moveDecision.shouldMove())
-        }
+    fun race(): Cars {
+        return Cars(
+            cars.map { car ->
+                car.move(moveDecision.shouldMove())
+            },
+        )
     }
 
     fun getCars(): List<Car> = cars

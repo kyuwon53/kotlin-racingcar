@@ -4,10 +4,8 @@ class Car(
     val name: CarName,
     private val position: Position = Position(),
 ) {
-    fun move(shouldMove: Boolean) {
-        if (shouldMove) {
-            position.moveForward()
-        }
+    fun move(shouldMove: Boolean): Car {
+        return Car(name, position.move(shouldMove))
     }
 
     fun currentDistance(): Int = position.distance()

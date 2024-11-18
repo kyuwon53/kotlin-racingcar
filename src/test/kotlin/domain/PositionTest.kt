@@ -1,25 +1,39 @@
 import domain.Position
-import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
-class PositionTest : FunSpec({
-    test("display 함수는 현재 거리에 따라 '-' 문자를 반복하여 표시한다") {
-        val position = Position()
-        repeat(3) { position.moveForward() }
-        position.distance() shouldBe 3
-    }
+class PositionTest : BehaviorSpec({
 
-    test("Position 객체는 기본 생성 시 거리가 0으로 설정된다") {
+    Given("Position이 초기화된 상태에서") {
         val position = Position()
-        position.distance() shouldBe 0
-    }
 
-    test("moveForward 함수 호출 시 거리가 1씩 증가한다") {
-        val position = Position()
-        position.moveForward()
-        position.distance() shouldBe 1
+        Then("거리는 0이다") {
+            position.distance() shouldBe 0
+        }
 
-        position.moveForward()
-        position.distance() shouldBe 2
+        When("이동 조건이 충족되면") {
+            position.move(true)
+
+            Then("거리는 1 증가한다") {
+                position.distance() shouldBe 1
+            }
+        }
+
+        When("이동 조건이 충족되지 않으면") {
+            position.move(false)
+
+            Then("거리는 유지된다") {
+                position.distance() shouldBe 1
+            }
+        }
+
+        When("이동 조건이 여러 번 충족되면") {
+            position.move(true)
+            position.move(true)
+
+            Then("거리는 충족된 횟수만큼 증가한다") {
+                position.distance() shouldBe 3
+            }
+        }
     }
 })

@@ -13,6 +13,7 @@ fun main() {
     val raceGame = RaceGame(rounds, carNames, moveDecision)
 
     ResultView.displayStartMessage()
-    val result = raceGame.start()
-    ResultView.displayWinners(raceGame.winners(result))
+    val raceRecord = raceGame.start()
+    ResultView.displayRoundResults(raceRecord)
+    ResultView.displayWinners(raceGame.winners(raceRecord.raceRecord.last()))
 }

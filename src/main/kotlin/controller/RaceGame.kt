@@ -3,9 +3,8 @@ package controller
 import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
-import domain.Race
 import domain.RaceJudge
-import view.ResultView
+import domain.RaceRecord
 
 class RaceGame(
     private val rounds: Int,
@@ -14,12 +13,13 @@ class RaceGame(
 ) {
     private val initialCars = Cars(carNames, moveDecision)
 
-    fun start(): Cars {
-        return (1..rounds).fold(initialCars) { currentCars, _ ->
-            val currentRace = Race(currentCars).start()
-            ResultView.displayRoundResults(currentCars)
-            currentRace
+    fun start(): RaceRecord {
+        val raceRecord = RaceRecord()
+        repeat(rounds) {
+            val racedCar = initialCars.race()
+            raceRecord.record(racedCar)
         }
+        return raceRecord
     }
 
     fun winners(cars: Cars) = RaceJudge().findWinners(cars)

@@ -3,8 +3,8 @@ package controller
 import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
-import domain.RaceJudge
 import domain.RaceRecord
+import domain.Winners
 
 class RaceGame(
     private val rounds: Int,
@@ -22,5 +22,5 @@ class RaceGame(
         return raceRecord
     }
 
-    fun winners(cars: Cars) = RaceJudge().findWinners(cars)
+    fun winners(cars: Cars) = Winners.of(cars)
 }

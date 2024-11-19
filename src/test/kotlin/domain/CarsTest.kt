@@ -1,15 +1,14 @@
 package domain
 
-import domain.Car.CarName
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
 class CarsTest : BehaviorSpec({
 
     Given("여러 대의 자동차가 있고") {
-        val car1 = Car(CarName("matiz"))
-        val car2 = Car(CarName("benz"))
-        val car3 = Car(CarName("audi"))
+        val car1 = Car("matiz")
+        val car2 = Car("benz")
+        val car3 = Car("audi")
 
         When("모든 자동차가 전진하도록 결정된 경우") {
             val cars = Cars(listOf(car1, car2, car3)) { true }

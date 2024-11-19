@@ -1,6 +1,5 @@
 package domain
 
-import domain.Car.CarName
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
@@ -14,12 +13,12 @@ class CarNamesTest : FunSpec({
 
     test("이름 리스트에 중복이 있으면 예외가 발생한다") {
         shouldThrow<IllegalArgumentException> {
-            CarNames(listOf(CarName("Benz"), CarName("Benz")))
+            CarNames(listOf("Benz", "Benz"))
         }.message shouldBe "자동차 이름은 중복될 수 없습니다."
     }
 
     test("유효한 CarName 리스트로 CarNames 객체를 생성할 수 있다") {
-        val inputNames = listOf(CarName("Benz"), CarName("Audi"))
+        val inputNames = listOf("Benz", "Audi")
         val carNames = CarNames(inputNames)
         carNames.values() shouldBe inputNames
     }

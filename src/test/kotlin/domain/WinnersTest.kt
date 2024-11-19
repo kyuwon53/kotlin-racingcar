@@ -6,9 +6,9 @@ import io.kotest.matchers.shouldBe
 class WinnersTest : BehaviorSpec({
 
     Given("여러 자동차가 있을 때") {
-        val car1 = Car(Car.CarName("Benz"), 5)
-        val car2 = Car(Car.CarName("Audi"), 5)
-        val car3 = Car(Car.CarName("Ford"), 3)
+        val car1 = Car("Benz", 5)
+        val car2 = Car("Audi", 5)
+        val car3 = Car("Ford", 3)
 
         val cars = Cars(listOf(car1, car2, car3))
 

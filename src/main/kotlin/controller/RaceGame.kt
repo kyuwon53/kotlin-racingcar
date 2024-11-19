@@ -4,7 +4,6 @@ import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
 import domain.RaceRecord
-import domain.Winners
 
 class RaceGame(
     private val rounds: Int,

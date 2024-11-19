@@ -2,6 +2,7 @@ package app
 
 import controller.RaceGame
 import domain.RandomMoveDecision
+import domain.Winners
 import view.InputView
 import view.ResultView
 
@@ -15,5 +16,6 @@ fun main() {
     ResultView.displayStartMessage()
     val raceRecord = raceGame.start()
     ResultView.displayRoundResults(raceRecord)
-    ResultView.displayWinners(raceGame.winners(raceRecord.raceRecord.last()))
+    val winners = Winners(raceRecord.raceRecord.last())
+    ResultView.displayWinners(winners.determine())
 }

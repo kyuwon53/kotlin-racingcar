@@ -13,10 +13,11 @@ class WinnersTest : BehaviorSpec({
         val cars = Cars(listOf(car1, car2, car3))
 
         When("우승자를 판별하면") {
-            val winners = Winners.of(cars)
+            val winners = Winners(cars)
+            val result = winners.determine()
 
             Then("가장 멀리 이동한 자동차들이 반환된다") {
-                winners.cars() shouldBe listOf(car1, car2)
+                result.cars() shouldBe listOf(car1, car2)
             }
         }
     }
@@ -25,10 +26,11 @@ class WinnersTest : BehaviorSpec({
         val cars = Cars(emptyList())
 
         When("우승자를 판별하면") {
-            val winners = Winners.of(cars)
+            val winners = Winners(cars)
+            val result = winners.determine()
 
             Then("빈 리스트가 반환된다") {
-                winners.cars() shouldBe emptyList()
+                result.cars() shouldBe emptyList()
             }
         }
     }

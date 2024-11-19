@@ -21,6 +21,4 @@ class RaceGame(
         }
         return raceRecord
     }
-
-    fun winners(cars: Cars) = Winners.of(cars)
 }

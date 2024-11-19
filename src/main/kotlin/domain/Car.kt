@@ -19,5 +19,13 @@ class Car(
         return Car(name, position)
     }
 
+    fun isFurtherThan(other: Car): Boolean {
+        return this.position > other.position
+    }
+
+    fun hasSamePositionAs(other: Car): Boolean {
+        return this.position == other.position
+    }
+
     fun currentDistance(): Int = position
 }

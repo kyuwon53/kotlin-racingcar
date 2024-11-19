@@ -1,14 +1,19 @@
 package domain
 
 class Winners(private val cars: Cars) {
-    private val winners: List<Car> by lazy {
-        val maxDistance = cars.getCars().maxOfOrNull { it.currentDistance() } ?: 0
-        cars.getCars().filter { it.currentDistance() == maxDistance }
-    }
-
-    fun cars(): List<Car> = winners
-
     fun determine(): Winners {
-        return Winners(cars)
+        val racedCars = cars.getCars()
+        if (racedCars.isEmpty()) {
+            return Winners(Cars(emptyList()))
+        }
+
+        val maxCar =
+            racedCars.reduce { maxCar, currentCar ->
+                if (currentCar.isFurtherThan(maxCar)) currentCar else maxCar
+            }
+        val winningCars = racedCars.filter { it.hasSamePositionAs(maxCar) }
+        return Winners(Cars(winningCars))
     }
+
+    fun cars(): List<Car> = cars.getCars()
 }

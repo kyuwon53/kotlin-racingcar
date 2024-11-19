@@ -17,7 +17,7 @@ object ResultView {
 
     fun displayRoundResult(cars: Cars) {
         cars.getCars()
-            .forEach { println("${it.name} : ${displayDistances(it.currentDistance())}") }
+            .forEach { println("${it.name} : ${displayPosition(it.position)}") }
         println() // 각 라운드 간 구분을 위한 빈 줄
     }
 
@@ -26,5 +26,5 @@ object ResultView {
         println("최종 우승자: $winnerNames")
     }
 
-    private fun displayDistances(distance: Int) = "-".repeat(distance)
+    private fun displayPosition(position: Int) = "-".repeat(position)
 }

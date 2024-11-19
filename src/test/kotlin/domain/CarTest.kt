@@ -74,15 +74,15 @@ class CarTest : BehaviorSpec({
             car = Car("benz")
         }
 
-        Then("초기 거리는 0이다") {
-            car.currentDistance() shouldBe 0
+        Then("초기 위치는 0이다") {
+            car.position shouldBe 0
         }
 
         When("이동 조건이 충족되면") {
             car.move(true)
 
             Then("자동차는 한 칸 전진한다") {
-                car.currentDistance() shouldBe 1
+                car.position shouldBe 1
             }
         }
 
@@ -90,7 +90,7 @@ class CarTest : BehaviorSpec({
             car.move(false)
 
             Then("자동차는 멈춘다") {
-                car.currentDistance() shouldBe 0
+                car.position shouldBe 0
             }
         }
 
@@ -98,8 +98,8 @@ class CarTest : BehaviorSpec({
             car.move(true)
             car.move(true)
 
-            Then("거리는 충족된 횟수만큼 증가한다") {
-                car.currentDistance() shouldBe 2
+            Then("위치는 충족된 횟수만큼 증가한다") {
+                car.position shouldBe 2
             }
         }
     }

@@ -26,6 +26,4 @@ class Car(
     fun hasSamePositionAs(other: Car): Boolean {
         return this.position == other.position
     }
-
-    fun currentDistance(): Int = position
 }

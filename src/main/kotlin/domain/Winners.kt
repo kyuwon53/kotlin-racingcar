@@ -7,11 +7,9 @@ class Winners(private val cars: Cars) {
             return Winners(Cars(emptyList()))
         }
 
-        val maxCar =
-            racedCars.reduce { maxCar, currentCar ->
-                if (currentCar.isFurtherThan(maxCar)) currentCar else maxCar
-            }
-        val winningCars = racedCars.filter { it.hasSamePositionAs(maxCar) }
+        val maxCar = racedCars.maxOrNull() ?: return Winners(Cars(emptyList()))
+
+        val winningCars = racedCars.filter { it.compareTo(maxCar) == 0 }
         return Winners(Cars(winningCars))
     }
 

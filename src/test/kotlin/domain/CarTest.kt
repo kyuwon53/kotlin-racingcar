@@ -2,6 +2,9 @@ package domain
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.comparables.shouldBeEqualComparingTo
+import io.kotest.matchers.ints.shouldBeGreaterThan
+import io.kotest.matchers.ints.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 
 class CarTest : BehaviorSpec({
@@ -11,32 +14,19 @@ class CarTest : BehaviorSpec({
 
         When("첫 번째 자동차가 두 번째 자동차보다 멀리 있을 때") {
             Then("첫 번째 자동차가 더 멀리 있다고 판단한다") {
-                car1.isFurtherThan(car2) shouldBe true
+                car1.compareTo(car2) shouldBeGreaterThan 0
             }
 
             Then("두 번째 자동차는 더 멀리 있지 않다고 판단한다") {
-                car2.isFurtherThan(car1) shouldBe false
+                car2.compareTo(car1) shouldBeLessThan 0
             }
         }
 
         When("두 자동차가 같은 위치에 있을 때") {
             val car3 = Car("Car3", 5)
 
-            Then("어느 자동차도 더 멀리 있지 않다고 판단한다") {
-                car1.isFurtherThan(car3) shouldBe false
-                car3.isFurtherThan(car1) shouldBe false
-            }
-
             Then("두 자동차가 같은 위치에 있다고 판단한다") {
-                car1.hasSamePositionAs(car3) shouldBe true
-                car3.hasSamePositionAs(car1) shouldBe true
-            }
-        }
-
-        When("두 자동차가 다른 위치에 있을 때") {
-            Then("두 자동차가 같은 위치에 있지 않다고 판단한다") {
-                car1.hasSamePositionAs(car2) shouldBe false
-                car2.hasSamePositionAs(car1) shouldBe false
+                car1.compareTo(car3) shouldBeEqualComparingTo 0
             }
         }
     }

@@ -10,7 +10,7 @@ object InputView {
         val carNames = processInput(input)
 
         return try {
-            CarNames(carNames.map { it })
+            CarNames(carNames.map { it }.toSet())
         } catch (e: IllegalArgumentException) {
             println(e.message)
             getCarNames() // 재귀 호출로 다시 입력 요청

@@ -3,16 +3,21 @@ package controller
 import domain.CarNames
 import domain.Cars
 import domain.MoveDecision
-import domain.Race
+import domain.RaceRecord
 
 class RaceGame(
+    private val rounds: Int,
     carNames: CarNames,
-    rounds: Int,
     moveDecision: MoveDecision,
 ) {
-    private val race = Race(Cars.ofCarNames(carNames, moveDecision), rounds)
+    private val initialCars = Cars(carNames, moveDecision)
 
-    fun start() = race.start()
-
-    fun winners() = race.getWinners()
+    fun start(): RaceRecord {
+        val raceRecord = RaceRecord()
+        repeat(rounds) {
+            val racedCar = initialCars.race()
+            raceRecord.record(racedCar)
+        }
+        return raceRecord
+    }
 }
